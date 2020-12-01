@@ -1,0 +1,51 @@
+<%- contentFor('body') %>
+<div class="container">
+  <h2 class="text-center" style="margin-bottom: 40px;">Sign up</h2>
+  <% if(error != null){ %>
+    <div style="margin-right:auto; margin-left:auto; width:405px; text-align:center" class="alert alert-danger">
+      <%= error %>
+    </div>
+  <% } %>
+  <div class="row">
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4">
+      <form action="/register" method="post">
+        <div class="form-group">
+          <label for="email">Email</label><br>
+          <input type="email" name="email" id="email" class="form-control input-lg" autocomplete="on" autofocus style="font-size:14px;">
+          <p id="email" class="help-block"></p>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label><br>
+          <input type="password" name="password" placeholder="Min 6 characters" id="password" class="form-control input-lg" autocomplete="on" autofocus id= "email" style="font-size:14px;">
+          <p id="password" class="help-block"></p>
+        </div>
+        <div>
+          <button type="submit" id="register" class= "btn btn-primary btn-lg btn-block">Sign up</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-4">
+    </div>
+  </div> 
+</div>
+
+<script>
+  $('form').on('submit', function(e) {
+    var email=$("input#email").val();
+    if(email === "" ){
+     e.preventDefault(); 
+      $('#email').siblings('p').html('Is required');
+      $('#email').parent().addClass('has-error');
+    }
+    var password=$("input#password").val();
+    if(password.length < 6){
+      e.preventDefault(); 
+      $('#password').parent().addClass('has-error');
+      $('#password').siblings('p').html('Min 6 characters');
+    }  });
+</script>
+
+
+

@@ -1,0 +1,45 @@
+<%- contentFor('body') %>
+<% if(success && success.length >0) {%>
+  <div class="alert alert-success alert-dismissible" style="width:250px; position:fixed; right:100px; ">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong><%= success %></strong>
+  </div>
+<% }%>
+<div class="container">
+  <% if (user !== null) {%>
+    <a href="/new" class= "btn btn-primary" style="margin-bottom:30px;">New Poll</a>
+  <% } %>
+  <div class="row">
+    <% if (polls.length == 0) {%>
+      <div class="col-sm-3 col-xs-6" style="margin-right:15px; margin-bottom:20px;">
+        <div>No hay encuestas</div>
+      </div>
+    <% } %>
+    <% for (var i = 0; i < polls.length; i++) { %>
+      <div class="col-sm-3 col-xs-6" style="border: 1px solid #ddd; margin-right:15px; margin-bottom:20px;">
+        <% if (user == polls[i].created_by) {%>
+          <a href="/polls/<%= polls[i]._id %>/delete" onclick="return confirm('Are you sure?')"><i style="margin-top:10px;" class="glyphicon glyphicon-trash"></i></a>
+        <% } else{%>
+          <a style="visibility:hidden" href="/polls/<%= polls[i]._id %>/delete" onclick="return confirm('Are you sure?')"><i style="margin-top:10px;" class="glyphicon glyphicon-trash"></i></a>
+        <% } %>
+        <div style="margin-bottom:25px;">
+          <h2><%= polls[i].title %></h2>
+          <div style="margin-bottom:25px; font-size:12px;" class="text-muted" >Creado por <%= polls[i].created_by %></div>
+          <p style="height:80px;"><%= polls[i].description.slice(0,150) %></p>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 text-center" style="border-top: 1px solid #ddd; border-right: 1px solid #ddd; padding:10px;">
+            <div><%= polls[i].options[0].votes + polls[i].options[1].votes %> votes</div>
+          </div>
+          <div class="col-lg-6 text-center" style="border-top: 1px solid #ddd; padding:10px;">
+             <% if (user == polls[i].created_by) {%>
+               <a href="/polls/<%= polls[i]._id %>/results">Results</a>
+             <% } else{%>
+               <a href="/polls/<%= polls[i]._id %>/show">Vote</a>
+             <% } %>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</div>

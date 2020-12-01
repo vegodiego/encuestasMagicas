@@ -1,0 +1,30 @@
+<%- contentFor('body') %>
+<div class="container">
+  <h2 class="text-center" style="margin-bottom: 40px;">Login</h2>
+  <% if(error != null){ %>
+    <div style="margin-right:auto; margin-left:auto; width:405px; text-align:center" class="alert alert-danger">
+      <%= error %>
+    </div>
+  <% } %>
+  <div class="row" >
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4">
+      <form action="/login" method="post" >
+        <div class="form-group">
+          <label for="email">Email</label><br>
+          <input type="text" name="email" id="email" class="form-control input-lg" autocomplete="on" autofocus style="font-size:14px;">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label><br>
+          <input type="password" name="password" id="password" class="form-control input-lg" autocomplete="on" autofocus style="font-size:14px;">
+        </div>
+        <div >
+          <button type="submit" class= "btn btn-primary btn-lg btn-block">Login</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-4">
+    </div>
+  </div>
+</div>

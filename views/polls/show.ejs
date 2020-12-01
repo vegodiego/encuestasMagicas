@@ -1,0 +1,25 @@
+<%- contentFor('body') %>
+<div class="container">
+  <a href="/" style="margin-right:15%; margin-left:15%;">Back</a>
+  <div class="panel panel-default" style="margin-right:15%; margin-top:10px; margin-left:15%;">
+    <div class="panel-body">
+      <h2><%= poll.title %></h2>
+      <div style="margin-bottom:30px; font-size:12px;" class="text-muted">Creado por <%= poll.created_by %></div>
+      <p><%= poll.description %></p>
+    </div>
+  </div>
+  <div class="panel panel-default" style="margin-right:15%; margin-left:15%;">
+    <div class="panel-body">
+      <form action="/polls/<%= poll._id %>/vote" method="post">
+        <label style="margin-bottom:25px;">Selecciona la opción:</label>
+        <div class="radio" style="margin-bottom:25px;">
+          <label><input type="radio" name="options" value="0" checked><%= poll.options[0].name %></label> 
+        </div>
+        <div class="radio" style="margin-bottom:25px;">
+          <label><input type="radio" name="options" value="1"><%= poll.options[1].name %></label>
+        </div>
+        <button type="submit" class= "btn btn-primary">Vote</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<%- contentFor('body') %>
+<div class="container">
+  <h2 class="text-center" style="margin-bottom: 40px;">New Poll</h2>
+  <div class="row" style="margin-bottom:100px;">
+    <div class="col-sm-6 col-sm-offset-3">
+      <form action="/new" method="post">
+        <div class="form-group">
+          <label for="title">Title</label><br>
+          <input type="text" name="title" id="title" class="form-control input-lg" style="font-size:14px;">
+          <p id="title" class="help-block"></p>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label><br>
+          <textarea id="description" name="description" rows="8" class="form-control"></textarea>
+          <p id="description" class="help-block"></p>
+        </div>
+        <div class="form-group">
+          <label>Options</label><br>
+          <input type="text" name="options[0][name]" id="option1" class="form-control input-lg" style="font-size:14px;">
+          <p id="option1" class="help-block"></p>
+          <br>
+          <input type="text" name="options[1][name]" id="option2" class="form-control input-lg" style="font-size:14px;">
+          <p id="option2" class="help-block"></p>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Create Poll</button><br>    
+        <a href="/">Cancel</a>
+      </form >
+    </div>
+  </div>
+</div>
+
+<script>
+  $('form').on('submit', function(e) {
+    var title=$("input#title").val();
+    if(title === "" ){
+      e.preventDefault(); 
+      $('#title').siblings('p').html('Required');
+      $('#title').parent().addClass('has-error');
+    }
+    var description=$("textarea#description").val();
+    if(description === "" ){
+      e.preventDefault(); 
+      $('#description').siblings('p').html('Required');
+      $('#description').parent().addClass('has-error');
+    }
+    var option1=$("input#option1").val();
+    if(option1 === "" ){
+      e.preventDefault(); 
+      $('#option1').siblings('p').html('Required');
+      $('#option1').parent().addClass('has-error');
+    }
+    var option2=$("input#option2").val();
+    if(option2 === "" ){
+      e.preventDefault(); 
+      $('#option2').siblings('p').html('Required');
+      $('#option2').parent().addClass('has-error');
+    }
+  });
+</script>

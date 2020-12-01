@@ -1,0 +1,38 @@
+{
+  "name": "encuestasMagicas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "connect-flash": "^0.1.1",
+    "cookie-session": "^1.4.0",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "jest": "^26.0.1",
+    "mongoose": "^5.9.13",
+    "mongoose-unique-validator": "^2.0.3",
+    "puppeteer": "^3.1.0",
+    "superagent": "^5.2.2",
+    "supertest": "^4.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest --forceExit",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vegodiego/encuestasMagicas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vegodiego/encuestasMagicas/issues"
+  },
+  "homepage": "https://github.com/vegodiego/encuestasMagicas#readme"
+}
